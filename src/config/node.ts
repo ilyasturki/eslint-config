@@ -1,6 +1,6 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "ilyasso/node",
   files: ["server/**/*.ts", "shared/**/*.ts"],
   ignores: ["**/drizzle.config.ts"],
@@ -22,4 +22,4 @@ export default <TypedFlatConfigItem>{
     "node/prefer-promises/fs": "warn",
     "node/hashbang": "warn",
   },
-};
+} as TypedFlatConfigItem;

@@ -1,6 +1,6 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "ilyasso/imports",
   // ignores: ['eslint.config.ts', 'config/**/*.ts'],
   rules: {
@@ -27,4 +27,4 @@ export default <TypedFlatConfigItem>{
       },
     ],
   },
-};
+} as TypedFlatConfigItem;

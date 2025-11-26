@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "ilyasso/unicorn",
   rules: {
     ...eslintPluginUnicorn.configs.all.rules,
@@ -23,4 +23,4 @@ export default <TypedFlatConfigItem>{
       },
     ],
   },
-};
+} as TypedFlatConfigItem;

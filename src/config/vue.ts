@@ -1,6 +1,6 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "ilyasso/vue",
   rules: {
     "vue/block-lang": ["warn", { script: { lang: "ts" } }],
@@ -95,4 +95,4 @@ export default <TypedFlatConfigItem>{
     "vue-a11y/label-has-for": "off",
     "vue-a11y/heading-has-content": "off",
   },
-};
+} as TypedFlatConfigItem;

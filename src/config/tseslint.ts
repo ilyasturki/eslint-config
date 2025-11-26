@@ -7,7 +7,7 @@ const rulesArray = [
 ].map((i) => i.rules);
 const mergedRules = Object.assign({}, ...rulesArray.filter(Boolean));
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "ilyasso/typescript",
   files: ["**/*.ts", "**/*.vue"],
   // ignores: ['eslint.config.ts', 'config/**/*.ts'],
@@ -31,4 +31,4 @@ export default <TypedFlatConfigItem>{
     "ts/no-shadow": "warn",
     "ts/no-useless-empty-export": "warn",
   },
-};
+} as TypedFlatConfigItem;

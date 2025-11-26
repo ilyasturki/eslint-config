@@ -1,7 +1,7 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 import pluginNuxt from "@nuxt/eslint-plugin";
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "nuxt",
   plugins: {
     nuxt: pluginNuxt,
@@ -9,4 +9,4 @@ export default <TypedFlatConfigItem>{
   rules: {
     "nuxt/prefer-import-meta": "error",
   },
-};
+} as TypedFlatConfigItem;

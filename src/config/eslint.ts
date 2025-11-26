@@ -1,6 +1,6 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "ilyasso/eslint",
   rules: {
     camelcase: "warn",
@@ -70,4 +70,4 @@ export default <TypedFlatConfigItem>{
       },
     ],
   },
-};
+} as TypedFlatConfigItem;

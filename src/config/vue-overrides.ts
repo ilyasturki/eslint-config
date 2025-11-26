@@ -1,6 +1,6 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
-export default <TypedFlatConfigItem>{
+export default {
   name: "ilyasso/vue-overrides",
   files: ["**/*.vue"],
   rules: {
@@ -9,4 +9,4 @@ export default <TypedFlatConfigItem>{
     // Allow void in vue for defineSlots
     "ts/no-invalid-void-type": "off",
   },
-};
+} as TypedFlatConfigItem;
