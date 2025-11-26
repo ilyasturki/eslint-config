@@ -3,6 +3,7 @@ import antiTrojanPlugin from "eslint-plugin-anti-trojan-source";
 
 export default {
   name: "ilyasso/security",
+  files: ["**/*.ts", "**/*.tsx", "**/*.vue"],
   plugins: {
     "anti-trojan-source": antiTrojanPlugin,
   },

@@ -2,6 +2,7 @@ import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default {
   name: "ilyasso/eslint",
+  files: ["**/*.ts", "**/*.tsx", "**/*.vue"],
   rules: {
     camelcase: "warn",
     // 'consistent-return': 'warn', // conflict with 'unicorn/no-useless-undefined'

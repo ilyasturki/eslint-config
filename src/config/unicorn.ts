@@ -3,6 +3,7 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 
 export default {
   name: "ilyasso/unicorn",
+  files: ["**/*.ts", "**/*.tsx", "**/*.vue"],
   rules: {
     ...eslintPluginUnicorn.configs.all.rules,
     "unicorn/prevent-abbreviations": "off",
@@ -19,7 +20,6 @@ export default {
       "warn",
       {
         case: "kebabCase",
-        ignore: ["README.md", "CLAUDE.md", "AGENTS.md", "GEMINI.md"],
       },
     ],
   },

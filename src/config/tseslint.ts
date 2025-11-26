@@ -10,7 +10,6 @@ const mergedRules = Object.assign({}, ...rulesArray.filter(Boolean));
 export default {
   name: "ilyasso/typescript",
   files: ["**/*.ts", "**/*.vue"],
-  // ignores: ['eslint.config.ts', 'config/**/*.ts'],
   rules: {
     ...mergedRules,
     "ts/no-unnecessary-condition": "off",

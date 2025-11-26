@@ -2,7 +2,7 @@ import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
 export default {
   name: "ilyasso/imports",
-  // ignores: ['eslint.config.ts', 'config/**/*.ts'],
+  files: ["**/*.ts", "**/*.tsx", "**/*.vue"],
   rules: {
     // 'import/no-default-export': 'warn',
 

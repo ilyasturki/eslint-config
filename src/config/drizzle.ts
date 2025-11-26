@@ -4,6 +4,7 @@ import drizzlePlugin from "eslint-plugin-drizzle";
 export default {
   // https://github.com/drizzle-team/drizzle-orm/issues/2491
   name: "ilyasso/drizzle",
+  files: ["**/*.ts"],
   plugins: {
     drizzle: drizzlePlugin,
   },

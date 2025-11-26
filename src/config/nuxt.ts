@@ -3,6 +3,7 @@ import pluginNuxt from "@nuxt/eslint-plugin";
 
 export default {
   name: "nuxt",
+  files: ["**/*.ts", "**/*.tsx", "**/*.vue"],
   plugins: {
     nuxt: pluginNuxt,
   },
