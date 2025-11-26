@@ -74,13 +74,14 @@ export default function ilyasso(options: IlyassoOptions = {}) {
     antfuLint,
     imports,
     node,
+    security,
+    markdown,
+    comments,
   ];
 
   if (enableDrizzle) {
     configs.push(drizzle);
   }
-
-  configs.push(security, markdown, comments);
 
   // Apply user overrides if provided
   if (userOverrides) {
