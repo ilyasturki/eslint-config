@@ -65,7 +65,7 @@ interface IlyassoOptions {
      * Path to TypeScript project configuration file
      * @default './tsconfig.json'
      */
-    project?: string;
+    tsconfig?: string;
   };
 
   /**
@@ -209,7 +209,7 @@ import ilyasso from "@ilyasso/eslint-config";
 export default ilyasso({
   typecheck: {
     enable: true,
-    project: "./tsconfig.eslint.json",
+    tsconfig: "./tsconfig.eslint.json",
   },
 });
 ```

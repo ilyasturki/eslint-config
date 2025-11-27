@@ -29,7 +29,7 @@ export interface IlyassoOptions {
      * Path to TypeScript project configuration file
      * @default './tsconfig.json'
      */
-    project?: string;
+    tsconfig?: string;
   };
 
   /**
@@ -90,7 +90,7 @@ export default function ilyasso(options: IlyassoOptions = {}) {
 
   const {
     enable: enableTypecheck = false,
-    project: typecheckProject = "./tsconfig.json",
+    tsconfig: typecheckProject = "./tsconfig.json",
   } = typecheck ?? {};
 
   const configs: TypedFlatConfigItem[] = [
