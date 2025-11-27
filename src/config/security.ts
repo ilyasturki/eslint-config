@@ -1,4 +1,5 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
+// @ts-expect-error no typescript declaration
 import antiTrojanPlugin from "eslint-plugin-anti-trojan-source";
 
 export default {

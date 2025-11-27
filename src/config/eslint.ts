@@ -5,10 +5,13 @@ export default {
   files: ["**/*.ts", "**/*.tsx", "**/*.vue"],
   rules: {
     camelcase: "warn",
+    "arrow-body-style": ["warn", "as-needed"],
     // 'consistent-return': 'warn', // conflict with 'unicorn/no-useless-undefined'
     "default-param-last": "warn",
     "for-direction": "warn",
     "func-style": ["warn", "declaration", { allowArrowFunctions: true }],
+    "func-names": "warn",
+    "logical-assignment-operators": "warn",
     "no-await-in-loop": "warn",
     "no-bitwise": "warn",
     "no-constant-binary-expression": "warn",

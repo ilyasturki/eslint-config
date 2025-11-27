@@ -1,7 +1,15 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
 
+import tseslint from "typescript-eslint";
+
 import tsParser from "@typescript-eslint/parser";
 import vueParser from "vue-eslint-parser";
+
+const rulesArray = [
+  ...tseslint.configs.stylisticTypeCheckedOnly,
+  ...tseslint.configs.strictTypeCheckedOnly,
+].map((i) => i.rules);
+const mergedRules = Object.assign({}, ...rulesArray.filter(Boolean));
 
 export default function tseslintTypecheck(
   project: string,
@@ -24,7 +32,12 @@ export default function tseslintTypecheck(
       },
     },
     rules: {
+      ...mergedRules,
       "ts/strict-boolean-expressions": "error",
+      "ts/switch-exhaustiveness-check": "error",
+      "ts/require-array-sort-compare": "error",
+      "prefer-destructuring": "off",
+      "ts/prefer-destructuring": "error",
     },
   };
 }

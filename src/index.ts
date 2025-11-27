@@ -16,6 +16,7 @@ import tseslintTypecheck from "./config/tseslint-typecheck";
 import unicorn from "./config/unicorn";
 import vue from "./config/vue";
 import vueOverrides from "./config/vue-overrides";
+import disableStrict from "./config/disable-strict";
 
 export interface IlyassoOptions {
   typecheck?: {
@@ -30,6 +31,12 @@ export interface IlyassoOptions {
      */
     project?: string;
   };
+
+  /**
+   * Enable strict mode, some rules may slow you down
+   * @default false
+   */
+  strict?: boolean;
 
   /**
    * Enable Drizzle ORM linting rules
@@ -72,18 +79,19 @@ export interface IlyassoOptions {
 // https://github.com/antfu/eslint-config
 export default function ilyasso(options: IlyassoOptions = {}) {
   const {
+    typecheck,
+    strict: enableStrict = false,
     drizzle: enableDrizzle = false,
     ignores = [],
     rules: userRules,
     overrides: userOverrides,
-    typecheck,
     ...restOptions
   } = options;
 
   const {
     enable: enableTypecheck = false,
     project: typecheckProject = "./tsconfig.json",
-  } = typecheck || {};
+  } = typecheck ?? {};
 
   const configs: TypedFlatConfigItem[] = [
     eslint,
@@ -105,6 +113,9 @@ export default function ilyasso(options: IlyassoOptions = {}) {
   }
   if (enableDrizzle) {
     configs.push(drizzle);
+  }
+  if (!enableStrict) {
+    configs.push(disableStrict);
   }
 
   if (userOverrides) {

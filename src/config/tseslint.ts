@@ -26,6 +26,7 @@ export default {
       },
     ],
     "ts/no-loop-func": "warn",
+    "no-magic-numbers": "off",
     "ts/no-magic-numbers": ["warn", { ignore: [-1, 0, 1, 2, 10] }],
     "ts/no-shadow": "warn",
     "ts/no-useless-empty-export": "warn",
