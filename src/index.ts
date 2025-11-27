@@ -12,16 +12,31 @@ import node from "./config/node";
 import nuxt from "./config/nuxt";
 import security from "./config/security";
 import tseslint from "./config/tseslint";
+import tseslintTypecheck from "./config/tseslint-typecheck";
 import unicorn from "./config/unicorn";
 import vue from "./config/vue";
 import vueOverrides from "./config/vue-overrides";
 
 export interface IlyassoOptions {
+  typecheck?: {
+    /**
+     * Enable TypeScript type-checking rules
+     * @default false
+     */
+    enable: boolean;
+    /**
+     * Path to TypeScript project configuration file
+     * @default './tsconfig.json'
+     */
+    project?: string;
+  };
+
   /**
    * Enable Drizzle ORM linting rules
    * @default false
    */
   drizzle?: boolean;
+
   /**
    * Files and directories to ignore
    * @default []
@@ -61,8 +76,14 @@ export default function ilyasso(options: IlyassoOptions = {}) {
     ignores = [],
     rules: userRules,
     overrides: userOverrides,
+    typecheck,
     ...restOptions
   } = options;
+
+  const {
+    enable: enableTypecheck = false,
+    project: typecheckProject = "./tsconfig.json",
+  } = typecheck || {};
 
   const configs: TypedFlatConfigItem[] = [
     eslint,
@@ -79,11 +100,13 @@ export default function ilyasso(options: IlyassoOptions = {}) {
     comments,
   ];
 
+  if (enableTypecheck) {
+    configs.push(tseslintTypecheck(typecheckProject));
+  }
   if (enableDrizzle) {
     configs.push(drizzle);
   }
 
-  // Apply user overrides if provided
   if (userOverrides) {
     if (Array.isArray(userOverrides)) {
       configs.push(...userOverrides);
@@ -92,7 +115,6 @@ export default function ilyasso(options: IlyassoOptions = {}) {
     }
   }
 
-  // Apply user rules if provided
   if (userRules) {
     configs.push({
       name: "ilyasso/user-rules",

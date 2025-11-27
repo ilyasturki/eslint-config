@@ -1,3 +1,7 @@
 import ilyasso from "./src";
 
-export default ilyasso();
+export default ilyasso({
+  typecheck: {
+    enable: true,
+  },
+});

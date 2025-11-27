@@ -36,7 +36,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint",
-    "lint:fix": "eslint --fix"
+    "lint:fix": "eslint --fix",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "eslint": ">=9.0.0",
@@ -46,12 +47,14 @@
     "@antfu/eslint-config": "^6.2.0",
     "@eslint/js": "^9.39.1",
     "@nuxt/eslint-plugin": "^1.10.0",
+    "@typescript-eslint/parser": "^8.48.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-anti-trojan-source": "^1.1.2",
     "eslint-plugin-drizzle": "^0.2.3",
     "eslint-plugin-unicorn": "^62.0.0",
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
-    "typescript-eslint": "^8.48.0"
+    "typescript-eslint": "^8.48.0",
+    "vue-eslint-parser": "^10.2.0"
   },
   "devDependencies": {
     "eslint": "^9.39.1",
