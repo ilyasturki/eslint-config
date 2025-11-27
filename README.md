@@ -46,32 +46,74 @@ export default ilyasso();
 
 ### Advanced Configuration
 
-#### Full Configuration Example
+#### Configuration Options
+
+The `ilyasso()` function accepts an options object with the following properties:
+
+```typescript
+interface IlyassoOptions {
+  /**
+   * TypeScript type-checking configuration
+   */
+  typecheck?: {
+    /**
+     * Enable TypeScript type-checking rules
+     * @default false
+     */
+    enable: boolean;
+    /**
+     * Path to TypeScript project configuration file
+     * @default './tsconfig.json'
+     */
+    project?: string;
+  };
+
+  /**
+   * Enable strict mode, some rules may slow you down
+   * @default false
+   */
+  strict?: boolean;
+
+  /**
+   * Enable Drizzle ORM linting rules
+   * @default false
+   */
+  drizzle?: boolean;
+
+  /**
+   * Files and directories to ignore
+   * @default []
+   */
+  ignores?: string[];
+
+  /**
+   * Override or add specific ESLint rules
+   * Applied as the final config, giving it highest priority
+   */
+  rules?: Record<string, any>;
+
+  /**
+   * Additional config objects for advanced customization
+   * Can be a single config object or an array of config objects
+   */
+  overrides?: ConfigObject | ConfigObject[];
+
+  /**
+   * Additional options to pass to @antfu/eslint-config
+   * (e.g., vue, typescript, markdown, etc.)
+   */
+  [key: string]: unknown;
+}
+```
+
+#### Configuration Examples
+
+**Using the `rules` option to override or disable rules:**
 
 ```typescript
 import ilyasso from "@ilyasso/eslint-config";
 
 export default ilyasso({
-  // Enable typescript type checking rules
-  typecheck: {
-    enable: true,
-    project: "./tsconfig.eslint.json",
-  },
-
-  // Enable even more strict rules
-  strict: true, 
-
-  // Enable Drizzle ORM rules
-  drizzle: true,
-
-  // Custom ignore patterns
-  ignores: [
-    "dist/",
-    "server/database/migrations/",
-    "*.config.ts",
-  ],
-
-  // You can override or disable any rule using the `rules` option:
   rules: {
     // Disable console warnings in development
     'no-console': 'off',
@@ -81,18 +123,20 @@ export default ilyasso({
 
     // Allow magic numbers in specific cases
     'no-magic-numbers': ['warn', { ignore: [-1, 0, 1, 2, 10, 100] }],
-
-    // Disable underscore dangle warnings
-    'no-underscore-dangle': 'off',
   },
+});
+```
 
-  // Use the `overrides` option for more advanced customization with file patterns:
+**Using the `overrides` option for file-specific rules:**
+
+```typescript
+import ilyasso from "@ilyasso/eslint-config";
+
+export default ilyasso({
   overrides: {
     files: ['*.test.ts', '*.spec.ts'],
     rules: {
-      // Allow magic numbers in tests
       'no-magic-numbers': 'off',
-      // Allow console in tests
       'no-console': 'off',
     },
   },
