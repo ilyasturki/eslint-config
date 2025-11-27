@@ -2,30 +2,33 @@
 
 > Opinionated ESLint configuration for TypeScript, Vue, and Nuxt projects
 
-A comprehensive, shareable ESLint configuration built on top of [@antfu/eslint-config](https://github.com/antfu/eslint-config). Designed specifically for TypeScript projects with Vue 3, Nuxt, and modern tooling.
+A strict and opinionated ESLint configuration built on top of [@antfu/eslint-config](https://github.com/antfu/eslint-config). The goal of this configuration is to provide a specific set of rules and conventions that are tailored to the needs of TypeScript projects with Vue 3, Nuxt, and modern tooling.
 
 ## Features
 
-- **TypeScript-first** - Strict TypeScript rules with full type checking
-- **Vue 3 optimized** - Script setup API, accessibility rules via `vue-a11y`
+- **TypeScript-first** - Opt-in type checking with TypeScript
+- **Vue and Nuxt** - Vue 3 optimized, script setup api, Nuxt-specific rules and conventions
 - **Import enforcement** - Enforces `~/` and `~~/` aliases over relative `../` paths or `@/` paths
-- **Nuxt support** - Nuxt-specific rules and conventions
+- **Unicorn rules** - All `eslint-plugin-unicorn` rules with sensible overrides
 - **Security-first** - Anti-trojan-source protection built-in
 - **Flexible overrides** - Easy rule customization with `rules` and `overrides` options
 - **Prettier-compatible** - Stylistic rules disabled, use Prettier for formatting
-- **Optional Drizzle ORM** - Opt-in database safety rules (require WHERE clauses)
-- **Unicorn rules** - All `eslint-plugin-unicorn` rules with sensible overrides
+- **Drizzle ORM** - database safety rules (require WHERE clauses)
 
 ## Installation
 
+Using Bun (recommended)
 ```bash
-# Using Bun (recommended)
 bun add -D @ilyasso/eslint-config eslint typescript
+```
 
-# Using pnpm
+Using pnpm
+```bash
 pnpm add -D @ilyasso/eslint-config eslint typescript
+```
 
-# Using npm
+Using npm
+```bash
 npm install -D @ilyasso/eslint-config eslint typescript
 ```
 
@@ -49,6 +52,15 @@ export default ilyasso();
 import ilyasso from "@ilyasso/eslint-config";
 
 export default ilyasso({
+  // Enable typescript type checking rules
+  typecheck: {
+    enable: true,
+    project: "./tsconfig.eslint.json",
+  },
+
+  // Enable even more strict rules
+  strict: true, 
+
   // Enable Drizzle ORM rules
   drizzle: true,
 
@@ -117,6 +129,44 @@ export default ilyasso({
       },
     },
   ],
+});
+```
+
+#### TypeScript Type Checking with Nuxt
+
+If you want to enable type checking rules in a Nuxt project, you'll need to create a custom `tsconfig.eslint.json` file. This is required because Nuxt generates its TypeScript configuration dynamically.
+
+Create a `tsconfig.eslint.json` file in your project root:
+
+```json
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "include": [
+    "app/**/*",
+    "server/**/*",
+    "shared/**/*",
+    "*.ts",
+    "*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    ".nuxt",
+    ".output",
+    "dist"
+  ]
+}
+```
+
+Then reference it in your ESLint configuration:
+
+```typescript
+import ilyasso from "@ilyasso/eslint-config";
+
+export default ilyasso({
+  typecheck: {
+    enable: true,
+    project: "./tsconfig.eslint.json",
+  },
 });
 ```
 
