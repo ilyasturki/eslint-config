@@ -1,7 +1,7 @@
 {
   "name": "@ilyasso/eslint-config",
   "type": "module",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Custom ESLint configuration for Nuxt",
   "author": "Ilyas Turki",
   "license": "MIT",
