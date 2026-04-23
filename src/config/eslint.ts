@@ -11,6 +11,7 @@ export default {
     "for-direction": "warn",
     "func-style": ["warn", "declaration", { allowArrowFunctions: true }],
     "func-names": "warn",
+    "grouped-accessor-pairs": ["error", "getBeforeSet"],
     "logical-assignment-operators": "warn",
     "no-await-in-loop": "warn",
     "no-bitwise": "warn",
@@ -23,7 +24,6 @@ export default {
     "no-else-return": "warn",
     "no-empty-function": "warn",
     "no-empty-static-block": "warn",
-    "no-eq-null": "warn",
     "no-extra-label": "warn",
     "no-implicit-coercion": "warn",
     "no-implicit-globals": "warn",
@@ -32,10 +32,20 @@ export default {
     "no-label-var": "warn",
     "no-lonely-if": "warn",
     "no-loop-func": "warn",
-    "no-magic-numbers": ["warn", { ignore: [-1, 0, 1, 2, 10] }],
+    "no-magic-numbers": [
+      "warn",
+      {
+        ignore: [-1, 0, 1, 2, 10],
+        ignoreArrayIndexes: true,
+        ignoreDefaultValues: true,
+        ignoreEnums: true,
+        ignoreClassFieldInitialValues: true,
+        ignoreReadonlyClassProperties: true,
+      },
+    ],
     "no-multi-assign": "warn",
-    "no-negated-condition": "warn",
     "no-nested-ternary": "warn",
+    "no-new-native-nonconstructor": "error",
     "no-nonoctal-decimal-escape": "warn",
     "no-object-constructor": "warn",
     "no-param-reassign": "warn",
@@ -62,9 +72,9 @@ export default {
     "require-yield": "warn",
 
     "no-console": "warn",
+    "no-useless-return": "warn",
 
     "perfectionist/sort-imports": "off",
-    "no-useless-return": "off",
 
     // Overrides
     "array-callback-return": [

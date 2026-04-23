@@ -8,7 +8,7 @@ export default {
 
     // Always uses @ or ./ for import
     "no-restricted-imports": [
-      "warn",
+      "error",
       {
         patterns: [
           {

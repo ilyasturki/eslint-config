@@ -12,7 +12,6 @@ export default {
     "node/no-process-env": "warn",
     "node/no-process-exit": "warn",
     "node/no-sync": "warn",
-    "node/no-top-level-await": "warn",
     "node/no-unpublished-bin": "warn",
     "node/no-unpublished-import": "warn",
     "node/prefer-global/text-decoder": "warn",

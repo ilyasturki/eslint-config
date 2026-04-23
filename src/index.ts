@@ -15,8 +15,8 @@ import tseslint from "./config/tseslint";
 import tseslintTypecheck from "./config/tseslint-typecheck";
 import unicorn from "./config/unicorn";
 import vue from "./config/vue";
-import vueOverrides from "./config/vue-overrides";
 import disableStrict from "./config/disable-strict";
+import strict from "./config/strict";
 
 export interface IlyassoOptions {
   typecheck?: {
@@ -33,7 +33,9 @@ export interface IlyassoOptions {
   };
 
   /**
-   * Enable strict mode, some rules may slow you down
+   * Enable strict mode. Upgrades selected rules (no-console, no-magic-numbers,
+   * no-param-reassign, no-await-in-loop, ts/ban-ts-comment, etc.) from warn to
+   * error and keeps the looser non-strict defaults off.
    * @default false
    */
   strict?: boolean;
@@ -98,7 +100,6 @@ export default function ilyasso(options: IlyassoOptions = {}) {
     tseslint,
     unicorn,
     vue,
-    vueOverrides,
     nuxt,
     antfuLint,
     imports,
@@ -114,7 +115,9 @@ export default function ilyasso(options: IlyassoOptions = {}) {
   if (enableDrizzle) {
     configs.push(drizzle);
   }
-  if (!enableStrict) {
+  if (enableStrict) {
+    configs.push(strict);
+  } else {
     configs.push(disableStrict);
   }
 

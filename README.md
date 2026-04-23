@@ -214,6 +214,18 @@ export default ilyasso({
 
 **Note:** This package is designed for TypeScript projects only. JavaScript projects are not supported.
 
+## File scope conventions
+
+This config is tailored for Nuxt projects. A few rule groups only apply to Nuxt-specific directories:
+
+- **Node rules** (`node/no-sync`, `node/no-process-env`, `node/prefer-global/*`, etc.) apply only to files under `server/**/*.ts` and `shared/**/*.ts` — the Nuxt/Nitro convention. If your project uses a different layout (e.g., `src/server/`), these rules will not fire; use the `overrides` option to broaden the scope.
+- **Vue rules** apply to `**/*.vue` only.
+- **Markdown rules** apply to `**/*.md` and fenced code blocks inside markdown.
+
+## Strict mode
+
+`strict: true` upgrades selected rules from `warn` to `error` (notably `no-console`, `no-magic-numbers`, `no-param-reassign`, `no-await-in-loop`, `ts/ban-ts-comment`) and enforces `interface` over `type` for type definitions. Use it when you want the config to block commits rather than just flag problems.
+
 ## Recommended Setup
 
 ### With Prettier

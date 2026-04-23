@@ -50,6 +50,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-anti-trojan-source": "^1.1.2",
     "eslint-plugin-drizzle": "^0.2.3",
+    "eslint-plugin-no-secrets": "^2.3.3",
     "eslint-plugin-unicorn": "^64.0.0",
     "eslint-plugin-vuejs-accessibility": "^2.5.0",
     "typescript-eslint": "^8.59.0",

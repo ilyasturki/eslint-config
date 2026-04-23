@@ -12,7 +12,6 @@ export default {
   files: ["**/*.ts", "**/*.vue"],
   rules: {
     ...mergedRules,
-    "ts/no-unnecessary-condition": "off",
     "ts/no-unused-vars": [
       "warn",
       {
@@ -27,7 +26,18 @@ export default {
     ],
     "ts/no-loop-func": "warn",
     "no-magic-numbers": "off",
-    "ts/no-magic-numbers": ["warn", { ignore: [-1, 0, 1, 2, 10] }],
+    "ts/no-magic-numbers": [
+      "warn",
+      {
+        ignore: [-1, 0, 1, 2, 10],
+        ignoreArrayIndexes: true,
+        ignoreDefaultValues: true,
+        ignoreEnums: true,
+        ignoreNumericLiteralTypes: true,
+        ignoreReadonlyClassProperties: true,
+        ignoreTypeIndexes: true,
+      },
+    ],
     "ts/no-shadow": "warn",
     "ts/no-useless-empty-export": "warn",
   },

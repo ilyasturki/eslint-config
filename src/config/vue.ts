@@ -33,9 +33,12 @@ export default {
     "vue/no-import-compiler-macros": "warn",
     "vue/no-empty-component-block": "warn",
     "vue/no-multiple-objects-in-class": "warn",
-    "vue/no-negated-condition": "warn",
     "vue/no-negated-v-if-condition": "warn",
     "vue/no-ref-object-reactivity-loss": "warn",
+    "vue/no-setup-props-reactivity-loss": "error",
+    "vue/no-undef-components": "error",
+    "vue/no-v-html": "error",
+    "vue/require-default-prop": "warn",
     "vue/no-root-v-if": "warn",
     "vue/no-static-inline-styles": "warn",
     "vue/no-template-target-blank": "warn",
@@ -95,5 +98,10 @@ export default {
     // false positive
     "vue-a11y/label-has-for": "off",
     "vue-a11y/heading-has-content": "off",
+
+    // .vue-scoped overrides for rules that false-positive in templates
+    // or that conflict with Vue-specific syntax
+    "no-useless-assignment": "off",
+    "ts/no-invalid-void-type": "off",
   },
 } as TypedFlatConfigItem;

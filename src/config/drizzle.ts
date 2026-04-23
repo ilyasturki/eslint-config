@@ -1,5 +1,4 @@
 import type { TypedFlatConfigItem } from "@antfu/eslint-config";
-// @ts-expect-error no typescript declaration
 import drizzlePlugin from "eslint-plugin-drizzle";
 
 export default {
