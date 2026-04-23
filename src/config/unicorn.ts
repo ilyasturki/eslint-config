@@ -20,6 +20,8 @@ export default {
       "warn",
       {
         case: "kebabCase",
+        // Allow Nuxt/Next dynamic route filenames like [id].vue, [...slug].ts
+        ignore: [String.raw`\[.*\]`],
       },
     ],
   },

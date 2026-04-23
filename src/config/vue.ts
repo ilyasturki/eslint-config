@@ -7,6 +7,15 @@ export default {
     "vue/block-lang": ["warn", { script: { lang: "ts" } }],
     "vue/camelcase": "warn",
     "vue/component-api-style": ["warn", ["script-setup"]],
+    "vue/custom-event-name-casing": [
+      "warn",
+      "kebab-case",
+      {
+        ignores: [
+          String.raw`/^[a-z]+(?:-[a-z]+)*:[a-z]+(?:-[a-z]+)*$/u`,
+        ],
+      },
+    ],
     "vue/define-emits-declaration": "warn",
     "vue/define-props-declaration": "warn",
     "vue/define-props-destructuring": ["warn", { destructure: "never" }],
@@ -18,7 +27,7 @@ export default {
     ],
     "vue/html-button-has-type": "warn",
     "vue/match-component-import-name": "warn",
-    "vue/next-tick-style": "warn",
+    "vue/next-tick-style": "error",
     "vue/no-boolean-default": "warn",
     "vue/no-console": "warn",
     "vue/no-constant-condition": "warn",
@@ -40,7 +49,7 @@ export default {
     "vue/no-v-html": "error",
     "vue/require-default-prop": "warn",
     "vue/no-root-v-if": "warn",
-    "vue/no-static-inline-styles": "warn",
+    "vue/no-static-inline-styles": ["warn", { allowBinding: true }],
     "vue/no-template-target-blank": "warn",
     "vue/no-undef-properties": ["error", { ignores: [String.raw`/^\$/`] }],
     "vue/no-unused-emit-declarations": "warn",

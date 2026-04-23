@@ -42,6 +42,7 @@ export default function tseslintTypecheck(
       "ts/no-unnecessary-condition": "error",
       "prefer-destructuring": "off",
       "ts/prefer-destructuring": "error",
+      "node/no-sync": "warn",
     },
   };
 }

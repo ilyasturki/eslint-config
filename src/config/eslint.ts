@@ -6,6 +6,7 @@ export default {
   rules: {
     camelcase: "warn",
     "arrow-body-style": ["warn", "as-needed"],
+    curly: ["error", "all"],
     // 'consistent-return': 'warn', // conflict with 'unicorn/no-useless-undefined'
     "default-param-last": "warn",
     "for-direction": "warn",

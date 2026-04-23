@@ -10,10 +10,12 @@ A strict and opinionated ESLint configuration built on top of [@antfu/eslint-con
 - **Vue and Nuxt** - Vue 3 optimized, script setup api, Nuxt-specific rules and conventions
 - **Import enforcement** - Enforces `~/` and `~~/` aliases over relative `../` paths or `@/` paths
 - **Unicorn rules** - All `eslint-plugin-unicorn` rules with sensible overrides
-- **Security-first** - Anti-trojan-source protection built-in
+- **Security-first** - Anti-trojan-source and secret-detection baseline; opt-in `eslint-plugin-security` for ReDoS, unsafe fs paths, and `child_process` detection
+- **Code quality** - `eslint-plugin-sonarjs` and `eslint-plugin-promise` bundled for complexity, duplicated-branch, and async-correctness checks
 - **Flexible overrides** - Easy rule customization with `rules` and `overrides` options
 - **Prettier-compatible** - Stylistic rules disabled, use Prettier for formatting
 - **Drizzle ORM** - database safety rules (require WHERE clauses)
+- **Repo hygiene** - `eslint-plugin-depend` (flags deprecated deps) and `eslint-plugin-check-file` (kebab-case folders) always on; `eslint-plugin-package-json` behind a flag
 
 ## Installation
 
@@ -82,6 +84,20 @@ interface IlyassoOptions {
    * @default false
    */
   drizzle?: boolean;
+
+  /**
+   * Enable eslint-plugin-security rules (ReDoS, non-literal fs paths,
+   * child_process, eval, timing attacks, etc.). Noisy on some codebases.
+   * @default false
+   */
+  security?: boolean;
+
+  /**
+   * Enable eslint-plugin-package-json rules on `package.json` files
+   * (required fields, field order, valid SPDX, sorted deps, etc.).
+   * @default false
+   */
+  packageJson?: boolean;
 
   /**
    * Files and directories to ignore
