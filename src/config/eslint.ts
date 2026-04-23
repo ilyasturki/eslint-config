@@ -13,7 +13,6 @@ export default {
     "func-names": "warn",
     "grouped-accessor-pairs": ["error", "getBeforeSet"],
     "logical-assignment-operators": "warn",
-    "no-await-in-loop": "warn",
     "no-bitwise": "warn",
     "no-constant-binary-expression": "warn",
     "no-constant-condition": "warn",
@@ -71,7 +70,7 @@ export default {
     "require-unicode-regexp": "warn",
     "require-yield": "warn",
 
-    "no-console": "warn",
+    "no-console": ["warn", { allow: ["warn", "error"] }],
     "no-useless-return": "warn",
 
     "perfectionist/sort-imports": "off",

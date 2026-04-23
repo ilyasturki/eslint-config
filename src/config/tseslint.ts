@@ -38,7 +38,5 @@ export default {
         ignoreTypeIndexes: true,
       },
     ],
-    "ts/no-shadow": "warn",
-    "ts/no-useless-empty-export": "warn",
   },
 } as TypedFlatConfigItem;
