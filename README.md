@@ -18,16 +18,19 @@ A strict and opinionated ESLint configuration built on top of [@antfu/eslint-con
 ## Installation
 
 Using Bun (recommended)
+
 ```bash
 bun add -D @ilyasso/eslint-config eslint typescript
 ```
 
 Using pnpm
+
 ```bash
 pnpm add -D @ilyasso/eslint-config eslint typescript
 ```
 
 Using npm
+
 ```bash
 npm install -D @ilyasso/eslint-config eslint typescript
 ```
@@ -90,13 +93,13 @@ interface IlyassoOptions {
    * Override or add specific ESLint rules
    * Applied as the final config, giving it highest priority
    */
-  rules?: Record<string, any>;
+  rules?: TypedFlatConfigItem["rules"];
 
   /**
    * Additional config objects for advanced customization
    * Can be a single config object or an array of config objects
    */
-  overrides?: ConfigObject | ConfigObject[];
+  overrides?: TypedFlatConfigItem | TypedFlatConfigItem[];
 
   /**
    * Additional options to pass to @antfu/eslint-config
@@ -116,13 +119,13 @@ import ilyasso from "@ilyasso/eslint-config";
 export default ilyasso({
   rules: {
     // Disable console warnings in development
-    'no-console': 'off',
+    "no-console": "off",
 
     // Enforce multi-word component names
-    'vue/multi-word-component-names': 'error',
+    "vue/multi-word-component-names": "error",
 
     // Allow magic numbers in specific cases
-    'no-magic-numbers': ['warn', { ignore: [-1, 0, 1, 2, 10, 100] }],
+    "no-magic-numbers": ["warn", { ignore: [-1, 0, 1, 2, 10, 100] }],
   },
 });
 ```
@@ -134,10 +137,10 @@ import ilyasso from "@ilyasso/eslint-config";
 
 export default ilyasso({
   overrides: {
-    files: ['*.test.ts', '*.spec.ts'],
+    files: ["*.test.ts", "*.spec.ts"],
     rules: {
-      'no-magic-numbers': 'off',
-      'no-console': 'off',
+      "no-magic-numbers": "off",
+      "no-console": "off",
     },
   },
 });
@@ -153,23 +156,23 @@ import ilyasso from "@ilyasso/eslint-config";
 export default ilyasso({
   overrides: [
     {
-      files: ['*.test.ts', '*.spec.ts'],
+      files: ["*.test.ts", "*.spec.ts"],
       rules: {
-        'no-magic-numbers': 'off',
-        'no-console': 'off',
+        "no-magic-numbers": "off",
+        "no-console": "off",
       },
     },
     {
-      files: ['scripts/**/*.ts'],
+      files: ["scripts/**/*.ts"],
       rules: {
-        'no-console': 'off',
-        'node/prefer-global/process': 'off',
+        "no-console": "off",
+        "node/prefer-global/process": "off",
       },
     },
     {
-      files: ['*.config.ts', '*.config.js'],
+      files: ["*.config.ts", "*.config.js"],
       rules: {
-        'no-magic-numbers': 'off',
+        "no-magic-numbers": "off",
       },
     },
   ],
@@ -185,19 +188,8 @@ Create a `tsconfig.eslint.json` file in your project root:
 ```json
 {
   "extends": "./.nuxt/tsconfig.json",
-  "include": [
-    "app/**/*",
-    "server/**/*",
-    "shared/**/*",
-    "*.ts",
-    "*.vue"
-  ],
-  "exclude": [
-    "node_modules",
-    ".nuxt",
-    ".output",
-    "dist"
-  ]
+  "include": ["app/**/*", "server/**/*", "shared/**/*", "*.ts", "*.vue"],
+  "exclude": ["node_modules", ".nuxt", ".output", "dist"]
 }
 ```
 
